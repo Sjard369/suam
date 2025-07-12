@@ -1,13 +1,21 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.db'
+app.secret_key = os.environ.get("SECRET_KEY", "fallback-secret")
+
+# Sichere DB-URL-Erkennung für Railway
+db_url = os.environ.get('DATABASE_URL')
+if db_url and db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql://")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url or 'sqlite:///db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
-app.secret_key = 'abfugrugwhwgwev'
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
