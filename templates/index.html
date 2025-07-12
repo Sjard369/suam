@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-suam.automations</title>
+
+    <style>
+
+        body{
+            background-color: #222;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .bg{
+            position: fixed;
+            width: 50%;
+            height: 50%;
+            background-color: white;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 25px;
+            box-shadow: 4px 4px 10px rgb(83, 82, 82);
+        }
+
+        h1{
+            text-align: center;
+            color: #00AEEF;
+        }
+
+        input{
+            width: 50%;
+            height: 1.3rem;
+            border-radius: 10px;
+            border: solid 0.1px black;
+        }
+
+        button{
+            position: fixed;
+            color: white;
+            background-color: #00AEEF;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            width: 6rem;
+            height: 2rem;
+            bottom: 5rem;
+            transition: 1s ease;
+        }
+
+        button:hover{
+            color: #00AEEF;
+            background-color: black;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        p{
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1 class="header">Suam Automatisierungen</h1>
+    
+    <div class="bg">
+        <h1>Anmelden</h1>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Ihr Name..">
+            <br>
+            <input type="password" name="password" placeholder="Ihr Passwot..">
+            <button type="submit">Anmelden</button>
+        </form>
+        <p>Regestrieren sie sich hier -> <a href="/Registrierung">Regestrieren</a></p>
+    </div>
+
+    
+
+</body>
+
+</html>

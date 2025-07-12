@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>suam.automations</title>
+    
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+    /*outline: 1px solid red;*/
+}
+
+html, body {
+    overflow-x: hidden;
+    background-color: #222;
+}
+
+.logo{
+    text-decoration: underline;
+}
+
+a {
+    color: #eee;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #00AEEF;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3C475C;
+    padding: 0 1rem;
+    height: 4rem;
+    color: #00AEEF;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+#searchBar {
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 200px;
+    transition: width 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    color: #222;
+    border: 1px solid transparent;
+}
+
+#searchBar:focus {
+    width: 250px;
+    outline: none;
+}
+
+
+@media (max-width: 600px) {
+    #searchBar {
+        width: 120px;
+    }
+
+    #searchBar:focus {
+        width: 180px;
+    }
+}
+
+.imgHeader {
+    margin-top: 4rem; /* Platz für fixed header */
+    position: relative;
+    width: 100%;
+    height: 30rem;
+    background-color: #222;
+}
+
+
+.imgHeader img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: Opacity 4s ease-in-out forwards;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00AEEF;
+    text-shadow: #222 1px 0 10px;
+    text-align: center;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburgerShow {
+    position: absolute;
+    position: fixed;
+    right: 0;
+    top: 4rem;
+    width: 200px;
+    background-color: #3C475C;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 999;
+    border-radius: 0 0 0 17px;
+}
+
+.hamburgerShow.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.link-containerHMBG {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (max-width: 752px) {
+    .nav-links, #searchBar {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+.visualAspects-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #222;
+    color: #00AEEF;
+    text-align: center;
+}
+
+/*!!!!ANIMATIONEN!!!!*/
+
+@keyframes Opacity {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.visualAspects-container > div {
+    background-color: #3C475C;
+    padding: 2rem;
+    border-radius: 10px;
+    min-width: 150px;
+    flex: 1 1 200px;
+}
+
+.shopBTN{
+    color: #222;
+    background-color: #00AEEF;
+    width: 5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.shopBTN:hover{
+    color: #00AEEF;
+    background-color: #222;
+}
+
+.searcher{
+    position: fixed;
+    width: 100%;
+    height: 10rem;
+    top: 4rem;
+    background-color: #3C475C;
+    z-index: 99999;
+    opacity: 0;
+    display: none;
+}
+
+.linkSearch-container1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-top: 1.5rem;
+    align-items: center;
+}
+
+.headerV{
+    position: relative;
+    text-align: center;
+    color: #00AEEF;
+    text-decoration: underline;
+}
+
+.testerblock{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 10px;
+    background-color: red;
+    text-align: center;
+}
+
+.vitamins-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.vitamin-card {
+    background-color: #3C475C;
+    color: #00AEEF;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.vitamin-card h4,
+.Rating-card h4 {
+    margin-bottom: 1rem;
+}
+
+.vitamin-card p,
+.Rating-card p {
+    margin-top: 0; /* optional – damit nicht doppelt Abstand entsteht */
+}
+
+.Rev-header{
+    color: #00AEEF;
+    text-align: right;
+    text-decoration: underline;
+}
+
+.Rating-card{
+    background-color: #3C475C;
+    color: #00AEEF;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 200px;
+    text-align: center;
+}
+
+.Rating-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: right;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.stars{
+    color: gold;
+}
+
+.Rating-card h4,
+.Rating-card h4 {
+    margin-bottom: 1rem;
+}
+
+.Rating-card p,
+.Rating-card p {
+    margin-top: 0; /* damit nicht doppelt Abstand entsteht */
+}
+
+.Social-header{
+    color: #00AEEF;
+    margin-top: 2rem;
+    text-decoration: underline;
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.Social-logo{
+    width: 3.5rem;
+    cursor: pointer;
+}
+
+
+.site-footer {
+    background-color: #111;
+    color: #ccc;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-section h4 {
+    color: #00AEEF;
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section a:hover {
+    color: #00AEEF;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+
+    </style>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <section id="header">
+        <h1 class="logo">Suam Automatisierung</h1>
+        <input type="text" name="searchBar" id="searchBar" placeholder="Suchen...">
+        <nav class="nav-links">
+            <a href="/Startseite">Start</a>
+            <a href="/Kontakt">Kontakt</a>
+            <a href="/Automatisierungen">Automatisierungen</a>
+        </nav>
+        <button class="hamburger" id="hamburger">☰</button>
+    </section>
+
+    <div class="searcher" id="searcher">
+        <div class="linkSearch-container1">
+            <a href="/Startseite">Start</a>
+            <a href="/Kontakt">Kontakt</a>
+            <a href="/Automatisierungen">Automatisierungen</a>
+        </div>
+    </div>
+
+    <div class="hamburgerShow" id="hamburgerMenu">
+        <div class="link-containerHMBG">
+            <a href="/Startseite">Start</a>
+            <a href="/Kontakt">Kontakt</a>
+            <a href="/Automatisierungen">Automatisierungen</a>
+        </div>
+    </div>
+
+    <div class="imgHeader">
+        <img src="https://cdn.pixabay.com/photo/2017/08/12/09/17/industry-2633878_1280.jpg" alt="PC Automatisierungen" class="img1">
+        <div class="centered">
+            <h2>Haben sie auch genug davon ihre Arbeit manuell zu machen?</h2>
+            <h2>Dann sind sie hier genau richtig!</h2>
+            <h2>Mit unseren Automatisierungen werden sie ihren arbeits oder gaming altag vereinfachern!</h2>
+            <a href="/Automatisierungen"><button class="shopBTN">Shop</button></a>
+        </div>
+    </div>
+
+    <div class="visualAspects-container">
+        <div data-aos="fade-right" class="firstAspect">Sofortige Ergebnisse ⚡✨</div>
+        <div data-aos="fade-up" class="secondAspect">sobald Fehler auftreten werden wir es versuchen so schnell wie möglich zu reparieren!🧰🔧</div>
+        <div data-aos="fade-left" class="thirdAspect">Nur für Computer ⚙️🔄</div>
+    </div>
+
+    <h2 class="headerV">Was wir anbieten & erwarten</h2>
+
+    <div class="vitamins-container">
+        <div data-aos="fade-up" class="vitamin-card">
+            <h4>Was wir anbieten: </h4>
+            <ul>
+                <li>Personalisierte Automatisierungen</li>
+                <li>Schnelle Antworten</li>
+                <li>Einfache Konversationen</li>
+            </ul>
+        </div>
+        <div data-aos="fade-down" class="vitamin-card">
+            <h4>Was wir erwarten: </h4>
+            <ul>
+                <li>Geld</li>
+                <li>Und ebenfalls einfache Konversationen</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="Rev-header">Bewertungen</h2>
+
+    <div class="Rating-container">
+        <div data-aos="fade-right" class="Rating-card">
+            <h4>Emily</h4>
+            <p>Funktioniert einwandfrei! Genau das was ich wollte!</p>
+            <div class="stars">★★★★★</div>
+        </div>
+        <div data-aos="fade-left" class="Rating-card">
+            <h4>Max</h4>
+            <p>Es hilft mir sehr einfacher zu arbeiten. Jedoch war es ein bisschen teuer, aber ich würde es aufjedenfall wieder kaufen!</p>
+            <div class="stars">★★★★☆</div>
+        </div>
+        
+    </div>
+    
+    
+    <footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>Email & Telefon</h4>
+      <p>suam.automations@gmail.com<br>+49 152 38951396</p>
+    </div>
+    <div class="footer-section">
+      <h4>Social Media</h4>
+      <p>
+        <a href="https://www.instagram.com/suam.automatisierungen/" target="_blank">Instagram</a><br>
+        <a href="https://www.tiktok.com/@suam.automatisier" target="_blank">Tiktok</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Suam Automatisierungen - Alle Rechte vorbehalten
+  </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script>
+
+        const searchBar = document.getElementById('searchBar');
+
+searchBar.addEventListener('focus', () => {
+    searchBar.placeholder = '';
+});
+
+searchBar.addEventListener('blur', () => {
+    searchBar.placeholder = 'Search...';
+});
+
+const hamburger = document.getElementById('hamburger');
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+
+hamburger.addEventListener('click', () => {
+    hamburgerMenu.classList.toggle('active');
+});
+
+const searcher = document.getElementById('searcher');
+const input_values = ['Hilfe', 'Start', 'Kontakt', 'Automatisieungen', 'Produkt', 'Shop', 'Email']
+
+    function input_check() {
+        const userInput = searchBar.value.trim().toLowerCase();
+        const match = input_values.some(input => input.toLowerCase() === userInput);
+
+        if (match) {
+            searcher.style.opacity = '1';
+            searcher.style.display = 'block';
+        } else {
+            searcher.style.opacity = '0';
+            searcher.style.display = 'none';
+        }
+    }
+
+searchBar.addEventListener('input', () => {
+        input_check();
+    });
+
+document.addEventListener('DOMContentLoaded', () => {
+  AOS.init({
+    duration: 1200,
+    once: true
+  });
+});
+
+    </script>
+
+</body>
+</html>
